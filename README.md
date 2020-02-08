@@ -22,5 +22,6 @@ Total probability, addition/ convolution
 
 Kalman Filter states (variables) can be divided in observable and hidden. Multiple instances of an observable variable allows us to make inferences about a hidden variable, which cannot be observed directly.
 
-New location is equivalent to old location plus velocity
+New location is equivalent to old location plus velocity: 
+
     x' = x + Δt * ẋ'
