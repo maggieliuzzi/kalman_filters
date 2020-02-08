@@ -1,6 +1,6 @@
 # Kalman Filters
 
-Small functions for implementing Kalman Filters in Python
+Small functions for implementing Kalman Filters in Python.
 
 
 # Functions
