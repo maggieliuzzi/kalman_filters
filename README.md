@@ -12,7 +12,7 @@ Small functions for implementing Kalman Filters in Python.
 ## Measurement Update Step
 Bayes rule, multiplication
 
-## Prediction/ State Transition, Motion Update Step
+## Prediction/ State Transition/ Motion Update Step
 Total probability, addition/ convolution
 
 # Theoretical Equations
