@@ -9,7 +9,7 @@ and infer the (non-observable) velocity, which cannot be observed directly
 from math import *
 
 
-class matrix:
+class Matrix:
     
     def __init__(self, value):
         self.value = value
@@ -49,7 +49,7 @@ class matrix:
             print("Matrices must be of equal dimensions to add")  # raise(ValueError, "Matrices must be of equal dimensions to add")
         else:
             # add if correct dimensions
-            res = matrix([[]])
+            res = Matrix([[]])
             res.zero(self.dimx, self.dimy)
             for i in range(self.dimx):
                 for j in range(self.dimy):
@@ -62,7 +62,7 @@ class matrix:
             print("Matrices must be of equal dimensions to subtract")  # raise(ValueError, "Matrices must be of equal dimensions to subtract")
         else:
             # subtract if correct dimensions
-            res = matrix([[]])
+            res = Matrix([[]])
             res.zero(self.dimx, self.dimy)
             for i in range(self.dimx):
                 for j in range(self.dimy):
@@ -75,7 +75,7 @@ class matrix:
             print("Matrices must be m*n and n*p to multiply")  # raise(ValueError, "Matrices must be m*n and n*p to multiply")
         else:
             # multiply if correct dimensions
-            res = matrix([[]])
+            res = Matrix([[]])
             res.zero(self.dimx, other.dimy)
             for i in range(self.dimx):
                 for j in range(other.dimy):
@@ -85,7 +85,7 @@ class matrix:
     
     def transpose(self):
         # compute transpose
-        res = matrix([[]])
+        res = Matrix([[]])
         res.zero(self.dimy, self.dimx)
         for i in range(self.dimx):
             for j in range(self.dimy):
@@ -94,7 +94,7 @@ class matrix:
     
     def Cholesky(self, ztol=1.0e-5):
         # Computes the upper triangular Cholesky factorization of a positive definite matrix.
-        res = matrix([[]])
+        res = Matrix([[]])
         res.zero(self.dimx, self.dimx)
         
         for i in range(self.dimx):
@@ -118,7 +118,7 @@ class matrix:
     
     def CholeskyInverse(self):
         # Computes inverse of matrix given its Cholesky upper Triangular decomposition of matrix
-        res = matrix([[]])
+        res = Matrix([[]])
         res.zero(self.dimx, self.dimx)
         
         # Backward step for inverse
@@ -146,7 +146,7 @@ class matrix:
 def kalman_filter(x, P):
     for n in range(len(measurements)):
         # measurement update
-        Z = matrix([[measurements[n]]])  # create measurement matrix of nth measurement
+        Z = Matrix([[measurements[n]]])  # create measurement matrix of nth measurement
         y = Z - (H * x)  # calculate error
         S = H * P * H.transpose() + R  # matrix S with a transpose
         K = P * H.transpose() * S.inverse()  # Kalman gain K with the inverse
@@ -162,13 +162,13 @@ def kalman_filter(x, P):
 
 measurements = [1, 2, 3]  # sequence of position estimates
 
-x = matrix([[0.], [0.]]) # initial state (location and velocity)
-P = matrix([[1000., 0.], [0., 1000.]]) # initial uncertainty
-u = matrix([[0.], [0.]]) # external motion
-F = matrix([[1., 1.], [0, 1.]]) # next state function
-H = matrix([[1., 0.]]) # measurement function
-R = matrix([[1.]]) # measurement uncertainty
-I = matrix([[1., 0.], [0., 1.]]) # identity matrix
+x = Matrix([[0.], [0.]]) # initial state (location and velocity)
+P = Matrix([[1000., 0.], [0., 1000.]]) # initial uncertainty
+u = Matrix([[0.], [0.]]) # external motion
+F = Matrix([[1., 1.], [0, 1.]]) # next state function
+H = Matrix([[1., 0.]]) # measurement function
+R = Matrix([[1.]]) # measurement uncertainty
+I = Matrix([[1., 0.], [0., 1.]]) # identity matrix
 
 print(kalman_filter(x, P))
 # x: [[3.9996664447958645], [0.9999998335552873]]
