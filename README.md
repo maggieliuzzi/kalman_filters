@@ -12,11 +12,8 @@ Small functions for implementing Kalman Filters in Python.
 ## Measurement Update Step
 Bayes rule, multiplication
 
-    def update_mean_var(mean1, var1, mean2, var2)
-
 ## Prediction/ State Transition, Motion Update Step
 Total probability, addition/ convolution
-
 
 # Theoretical Equations
 

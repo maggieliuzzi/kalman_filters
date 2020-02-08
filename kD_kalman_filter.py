@@ -144,7 +144,9 @@ class Matrix:
 # Implement the filter function below
 
 def kalman_filter(x, P):
+    
     for n in range(len(measurements)):
+
         # measurement update
         Z = Matrix([[measurements[n]]])  # create measurement matrix of nth measurement
         y = Z - (H * x)  # calculate error
