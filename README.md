@@ -14,12 +14,13 @@ Bayes rule, multiplication
 
     def update_mean_var(mean1, var1, mean2, var2)
 
-## Prediction/ Motion Update Step
-Total probability, addition
+## Prediction/ State Transition, Motion Update Step
+Total probability, addition/ convolution
 
 
 # Theoretical Equations
 
 Kalman Filter states (variables) can be divided in observable and hidden. Multiple instances of an observable variable allows us to make inferences about a hidden variable, which cannot be observed directly.
 
-    x' = x + Δtẋ'
+New location is equivalent to old location plus velocity
+    x' = x + Δt * ẋ'
