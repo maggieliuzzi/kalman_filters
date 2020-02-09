@@ -10,7 +10,7 @@ Small functions for implementing Kalman Filters in Python.
     def gaussian_fn(mu, sigma_sq, x)
 
 ## Measurement Update/ Correction Step
-Bayes rule, multiplication
+Bayes rule, multiplication. Updates the state estimate and its uncertainty
 
 ## Prediction/ State Transition/ Motion Update Step
 Total probability, addition/ convolution
