@@ -62,13 +62,13 @@ int main() {
   measurements.push_back(single_meas);
 
   // call Kalman filter algorithm
-  filter(x, P);
+  kalman_filter(x, P);
 
   return 0;
 }
 
 
-void filter(VectorXd &x, MatrixXd &P) {
+void kalman_filter(VectorXd &x, MatrixXd &P) {
 
   for (unsigned int n = 0; n < measurements.size(); ++n) {
 
