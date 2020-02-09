@@ -139,12 +139,8 @@ class Matrix:
         return repr(self.value)
 
 
-########################################
-
-# Implement the filter function below
-
 def kalman_filter(x, P):
-    
+
     for n in range(len(measurements)):
 
         # measurement update
