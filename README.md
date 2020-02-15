@@ -2,6 +2,7 @@
 
 Small functions for implementing Kalman Filters in Python and C++.
 
+<img src="process_measurement.png" width="700" height="400" />
 
 # Functions
 
