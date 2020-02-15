@@ -75,17 +75,23 @@ void kalman_filter(VectorXd &x, MatrixXd &P) {
     VectorXd z = measurements[n];
     
     // KF masurement update step
-    MatrixXd y = z - (H * x);
+    MatrixXd y = z - H * x;  // error calculation given new measurement z
     MatrixXd S = H * P * H.transpose() + R;
-    MatrixXd K = P * H.transpose() * S.inverse();
-    x = x + (K * y);
-    P = (I - (K * H)) * P;
-        
+    MatrixXd K = P * H.transpose() * S.inverse();  // Kalman gain
+    
     // new state
-    x = (F * x) + u;
-    P = F * P * F.transpose();
+    x = x + K * y;
+    P = (I - (K * H)) * P;  // covariance
 		
     // KF prediction step
+    // Question: why do we not use the process noise in the state prediction function, even though the state transition equation has one?, i.e. why u = 0?
+    // Answer: mean is zero and its covariance matrix is usually noted by Q * N(0,Q)Q∗N(0,Q). 
+    // The first equation only predicts the mean state. As the mean value of the noise is zero, it does not directly affect the predicted state. 
+    // However, we can see that the noise covariance QQ is added here to the state covariance prediction so that the state uncertainty always increases through the process noise
+    // State vector only tracks position and velocity, so we are modelling acceleration as a random noise
+    x = F * x + u;  // u: process/ motion noise, i.e. uncertainty in the object's position when predicting location. Prediction assumes constant velocity, so (de)acceleration creates noise. Process noise depends on both the elapsed time and the uncertainty of acceleration
+    P = F * P * F.transpose() + Q;  // state covariance update  // Q is a function of delta t, among other variables. As more time passes, we become more uncertain about our position and velocity
+
     cout << "x=" << endl <<  x << endl;
     cout << "P=" << endl <<  P << endl;
   }
