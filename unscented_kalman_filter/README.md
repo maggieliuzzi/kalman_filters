@@ -2,14 +2,14 @@
 
 ## Steps
 
-    Generating sigma points
+1) Generating sigma points
 
-    Augmenting sigma points
+2) Augmenting sigma points
 
-    Predicting sigma points
+3) Predicting sigma points
 
-    Predicting state mean and covariance
+4) Predicting state mean and covariance
 
-    Predicting radar measurement
+5) Predicting radar measurement
 
-    Updating state
+6) Updating state
